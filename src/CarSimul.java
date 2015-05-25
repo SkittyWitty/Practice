@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 // Raytheon
@@ -62,7 +63,8 @@ public class CarSimul {
 	
 //These two methods run the statistics on Car A and Car B
 	public static boolean carA(){
-		int comp = (int)(Math.random() * 100);
+		Random rand = new Random();
+		int comp = rand.nextInt(101);
 		if(comp > 90){
 			//moves 5 ft
 			return true;
@@ -74,7 +76,8 @@ public class CarSimul {
 	}
 
 	public static boolean carB(){
-		int comp = (int)(Math.random() * 100);
+		Random rand = new Random();
+		int comp = rand.nextInt(101);
 		if(comp > 60){
 			//moves 1 ft
 			return true;
