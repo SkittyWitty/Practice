@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.Scanner;
 
 // Raytheon
 //
@@ -15,8 +15,11 @@ import java.util.Random;
 
 public class CarSimul {
 	public static void main(String [] args){
-		Random rand = new Random();
-		System.out.println(rand.nextInt(4));
+		System.out.println("Please input the amount of races you would like to see.");
+		Scanner in = new Scanner(System.in);
+		int races = in.nextInt();
+		System.out.println("Races will now commense");
+		runRace(races);
 	}
 
 	public static void runRace(int raceCount){
@@ -31,7 +34,8 @@ public class CarSimul {
 			A = 0;
 			B = 0;
 			//100ft win
-			while(A != 100 || B != 100){
+			while(A != 100 && B != 100){
+				//System.out.println("Let race "+rc+" commense:");
 				if(carA()){
 					A += 5;
 				}
@@ -58,7 +62,7 @@ public class CarSimul {
 	
 //These two methods run the statistics on Car A and Car B
 	public static boolean carA(){
-		int comp = (int)Math.random() * 100;
+		int comp = (int)(Math.random() * 100);
 		if(comp > 90){
 			//moves 5 ft
 			return true;
@@ -70,7 +74,7 @@ public class CarSimul {
 	}
 
 	public static boolean carB(){
-		int comp = (int)Math.random() * 100;
+		int comp = (int)(Math.random() * 100);
 		if(comp > 60){
 			//moves 1 ft
 			return true;
