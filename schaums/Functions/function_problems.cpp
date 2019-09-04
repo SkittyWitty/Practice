@@ -1,5 +1,6 @@
 #include <iostream>
 #include "function_problems.h"
+#include <cmath>
 
 using namespace std;
 
@@ -9,10 +10,8 @@ bool isLeapYear(int y){
 }
 
 void problem_5_1(){
-    int n;
-
-    cout << "Input a year " << endl;
-    cin >> n;
+    cout << "problem_5_1" << endl;
+    int n = 2015;
     if(isLeapYear(n)){
         cout << n << " is a leap year.\n" << endl;
     }
@@ -31,7 +30,32 @@ bool add_by_val(int x){
 }
 
 void problem_5_2(){
+    cout << "problem_5_2" << endl;
     int x = 4;
     //cout << "By reference: " << add_by_ref(x) << endl;
     cout << "By value: " << add_by_val(x) << endl;
+}
+
+
+//Problem 5-3
+void problem_5_3(){
+    cout << "problem_5_3" << endl;
+    for(float x = 0; x < 2; x+= 0.2){
+        cout << x << "\t\t" << cos(2*x) << "\t" << 2*pow(cos(x),2)-1 << endl;
+    }
+}
+
+//Problem 5-4
+void problem_5_4(){
+
+}
+
+//Problem 5-5
+void problem_5_5(){
+    cout << "problem_5_5" << endl;
+
+    double b = 2.0;
+    for(float x = 0; x < 2; x+= 0.2){
+        cout << x << "\t\t" << pow(b, x) << "\t" <<  exp(x*log(b)) << endl;
+    }
 }

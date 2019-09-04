@@ -10,5 +10,7 @@ int main(int argc, char *argv[])
     refPassDriver();
     problem_5_1();
     problem_5_2();
+    problem_5_3();
+    problem_5_5();
     return 0;
 }
