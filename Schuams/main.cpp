@@ -1,6 +1,6 @@
 #include <iostream>
-#include "function_problems.h"
-#include "function_practice.h"
+#include "Functions/function_problems.h"
+#include "Functions/function_practice.h"
 
 using namespace std;
 
