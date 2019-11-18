@@ -1,7 +1,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#incldue <list>
+#include <list>
+
+using namespace std;
 
 class Graph {
 public:
