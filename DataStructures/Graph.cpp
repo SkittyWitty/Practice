@@ -26,19 +26,22 @@ void Graph::BFS(int v) {
 	// Queue to hold the vertices we are currently searching
 	queue<int> q; 
 	q.push(v); // Start with the given vertex
+	visited[v] = true;
 	int cur;
 	
 	while (!q.empty()) {
 		//Grab adj list of the starting vertex
 		cur = q.front();
-		visited[cur] = true;
-		std::cout << ' ' << cur;
+		std::cout << " " << cur;
+
 		for (list<int>::iterator it = adj[cur].begin(); it != adj[cur].end(); ++it) {
 			if (!visited[*it]) {
+				visited[*it] = true;
 				q.push(*it);
 			}
 		}
+		//cout << endl;
 		q.pop();
 	}
-	cout << endl << "BFS END" << endl;
+	cout << endl << "BFS :) END" << endl;
 }
