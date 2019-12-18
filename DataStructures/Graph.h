@@ -14,6 +14,10 @@ public:
 
 	//Traverse Graph via Breadth First search given a vertex to start
 	void BFS(int v);
+
+	//Traverse Graph via Depth First Search
+	void DFS(int v);
+	void explore(int v); //Utility for exploring all reachable vertices of a given source
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices

@@ -45,3 +45,16 @@ void Graph::BFS(int v) {
 	}
 	cout << endl << "BFS :) END" << endl;
 }
+
+void Graph::explore(int v, bool* visited) {
+	//Get the list of adj vertices and travel to each one
+	for (list<int>::iterator it = adj[v].begin; it != adj[v].end(); ++it) {
+		if (!visited[*it]) { // if it hasn't been visited yet go deeper
+			explore(*it, visited);
+		}
+	}
+	explore(v, visited); //Use recursion as our stack to retrace our steps
+}
+
+void Graph::DFS(int v){
+}
