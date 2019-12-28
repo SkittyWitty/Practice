@@ -17,7 +17,9 @@ public:
 
 	//Traverse Graph via Depth First Search
 	void DFS(int v);
-	void explore(int v); //Utility for exploring all reachable vertices of a given source
+	void explore(int v, bool* visited); //Utility for exploring all reachable vertices of a given source
+	void explore(int v, bool* visited, bool* source);
+	void findSources(int v);
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices

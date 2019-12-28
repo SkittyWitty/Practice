@@ -47,14 +47,68 @@ void Graph::BFS(int v) {
 }
 
 void Graph::explore(int v, bool* visited) {
+	cout << "exploring node " << v << endl;
+
 	//Get the list of adj vertices and travel to each one
-	for (list<int>::iterator it = adj[v].begin; it != adj[v].end(); ++it) {
+	visited[v] = true;
+	//pre visit here
+	for (list<int>::iterator it = adj[v].begin(); it != adj[v].end(); ++it) {		
 		if (!visited[*it]) { // if it hasn't been visited yet go deeper
-			explore(*it, visited);
+			explore(*it, visited); //Use recursion as our stack to retrace our steps
 		}
 	}
-	explore(v, visited); //Use recursion as our stack to retrace our steps
+	//post visit here
 }
 
 void Graph::DFS(int v){
+	bool* visited = new bool[totalV]; //bool array to represent each node and if it has been visited
+
+	//mark each node as not visited
+	for (int i = 0; i < totalV; i++) {
+		visited[i] = false;
+	}
+	
+	cout << "DFS Start" << endl;
+
+	//search every vertex
+	for (int i = 0; i < totalV; i++) { 
+		if (!visited[i]) {
+			explore(i, visited);
+		}
+	}
+	cout << "DFS End :)" << endl;
+}
+
+void Graph::explore(int v, bool* visited, bool* source) {
+	visited[v] = true;
+
+	for (auto it = adj[v].begin(); it != adj[v].end(); ++it) {
+		if (!visited[*it]) {
+			//if it is found in an adj list it is not a source
+			source[*it] = false;
+			explore(*it, visited, source);
+		}
+	}
+}
+
+void Graph::findSources(int v) {
+	bool* visited = new bool[totalV];
+	bool* source = new bool[totalV];
+
+	for (int i = 0; i < totalV; i++) {
+		visited[i] = false;
+		source[i] = true;
+	}
+
+	for (int i = 0; i < totalV; i++) {
+		if (!visited[i]) {
+			explore(i, visited, source);
+		}
+	}
+
+	for (int i = 0; i < totalV; i++) {
+		if (source[i]) {
+			cout << i << " is a source" << endl;
+		}
+	}
 }

@@ -15,6 +15,7 @@ void graphTestDriver() {
 	g.addEdge(3, 3);
 
 	//DFS
+	g.DFS(2);
 
 	//BFS
 	g.BFS(2);
@@ -35,6 +36,28 @@ void graphTestDriver2() {
 	g.BFS(0);
 }
 
+void graphTestDriver3() {
+	Graph g(10);
+
+	g.addEdge(0, 1);
+	g.addEdge(0, 2);
+
+	g.addEdge(1, 3);
+	g.addEdge(2, 4);
+
+	g.addEdge(3, 5);
+	g.addEdge(3, 6);
+
+	g.addEdge(5, 7);
+
+	g.addEdge(8, 9);
+
+	g.DFS(0);
+
+	g.findSources(0);
+	
+}
+
 void nodeTestDrive() {
 	Node n1;
 	Node* next = n1.getNext();
@@ -52,8 +75,8 @@ int main()
 {
     cout << "Hello World!" << endl;
 
-	graphTestDriver();
-
+	//graphTestDriver();
+	graphTestDriver3();
     return 0;
 }
 
