@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "Graph.h"
 #include "LinkedList.h"
 
@@ -58,6 +58,40 @@ void graphTestDriver3() {
 	
 }
 
+//Colorable graph
+void graphTestDriver4() {
+	Graph g(4);
+	g.addEdge(0, 1);
+	g.addEdge(1, 3);
+	g.addEdge(3, 2);
+	g.addEdge(2, 0);
+
+	if (g.colorable()) {
+		cout << "Graph is colorable! 😁" << endl;
+	}
+	else {
+		cout << "Graph is not colorable 😭" << endl;
+	}
+}
+
+//Graph is not colorable
+void graphTestDriver5(){
+	Graph g(4);
+
+	g.addEdge(0, 1);
+	g.addEdge(1, 3);
+	g.addEdge(3, 2);
+	g.addEdge(2, 0);
+	g.addEdge(0, 3);
+
+	if (g.colorable()) {
+		cout << "Graph is Colorable!" << endl;
+	}
+	else {
+		cout << "Graph is not colorable" << endl;
+	}
+}
+
 void nodeTestDrive() {
 	Node n1;
 	Node* next = n1.getNext();
@@ -77,6 +111,8 @@ int main()
 
 	//graphTestDriver();
 	graphTestDriver3();
+	graphTestDriver4();
+	graphTestDriver5();
     return 0;
 }
 

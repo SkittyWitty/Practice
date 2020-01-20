@@ -1,9 +1,15 @@
-#ifndef GRAPH_H
+	#ifndef GRAPH_H
 #define GRAPH_H
 
 #include <list>
 
 using namespace std;
+
+enum Color {
+	BLACK,
+	WHITE,
+	NONE
+};
 
 class Graph {
 public:
@@ -17,12 +23,16 @@ public:
 
 	//Traverse Graph via Depth First Search
 	void DFS(int v);
-	void explore(int v, bool* visited); //Utility for exploring all reachable vertices of a given source
-	void explore(int v, bool* visited, bool* source);
+
 	void findSources(int v);
+
+	bool colorable();
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices
-};
+	void explore(int v, bool* visited); //Utility for exploring all reachable vertices of a given source
+	void explore(int v, bool* visited, bool* source);
+	bool explore(int v, bool* visited, Color* vColor);
+};	
 
 #endif // GRAPH_H

@@ -106,9 +106,63 @@ void Graph::findSources(int v) {
 		}
 	}
 
+	//Print out the source found if any
 	for (int i = 0; i < totalV; i++) {
 		if (source[i]) {
 			cout << i << " is a source" << endl;
 		}
 	}
+}
+
+//Used to find if a graph is colorable
+bool Graph::explore(int v, bool* visited, Color* vColor) {
+	visited[v] = true;
+	//as the graph is explored color in nodes
+	for (auto it = adj[v].begin(); it != adj[v].end(); ++it) {
+		//as we are exploring check if it is colorable
+		Color curVertexColor = vColor[*it];
+		if (curVertexColor != Color::NONE && curVertexColor == vColor[v]) {
+			return false;
+		}
+		else if(curVertexColor == Color::NONE && vColor[v] == Color::WHITE){
+			vColor[*it] = Color::BLACK;
+		}
+		else if (curVertexColor == Color::NONE && vColor[v] == Color::BLACK) {
+			vColor[*it] = Color::WHITE;
+		}
+
+		//if connecting node is the same color return false
+		if (!visited[*it]) {
+			explore(*it, visited, vColor);
+		}
+	}
+
+	//if all nodes have been explored that means that this graph is colorable and we can return true
+	return true;
+}
+
+bool Graph::colorable() {
+	Color *vColor = new Color[totalV];
+	bool* visited = new bool[totalV];
+	bool colorable = false;
+
+	for (int i = 0; i < totalV; i++) {
+		//array that contains info on each nodes color
+		vColor[i] = Color::NONE;
+		visited[i] = false;
+	}
+
+	vColor[0] = Color::BLACK;
+
+	for (int i = 0; i < totalV; i++) {
+		if (!visited[i]) {
+			colorable = explore(i, visited, vColor);
+		}
+
+		if (!colorable) {
+			return false;
+		}
+	}
+
+	return true;
 }
