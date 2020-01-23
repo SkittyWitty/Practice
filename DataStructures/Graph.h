@@ -28,8 +28,8 @@ public:
 	void DFS(int v);
 
 	void findSources(int v);
-	bool colorable();
 
+	bool colorable();
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices
