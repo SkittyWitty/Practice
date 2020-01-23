@@ -4,10 +4,15 @@
 #include <queue>
 
 using namespace std;
+Graph::Graph() {}
 
 Graph::Graph(int v){
 	totalV = v;
 	adj = new list<int>[v];
+}
+
+int Graph::getTotalVertices() {
+	return totalV;
 }
 
 void Graph::addEdge(int v, int w) {

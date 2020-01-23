@@ -92,6 +92,18 @@ void graphTestDriver5(){
 	}
 }
 
+void graphTestDriver6() {
+	Graph g(2);
+	g.addEdge(0, 1);
+	g.addEdge(1, 2);
+	
+	Graph gRev;
+
+	gRev = g;
+
+	cout << "Reverse Graph Total Vertices: " << gRev.getTotalVertices() << endl;
+}
+
 void nodeTestDrive() {
 	Node n1;
 	Node* next = n1.getNext();
@@ -113,6 +125,8 @@ int main()
 	graphTestDriver3();
 	graphTestDriver4();
 	graphTestDriver5();
+
+	graphTestDriver6();
     return 0;
 }
 

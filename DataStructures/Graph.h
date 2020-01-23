@@ -1,4 +1,4 @@
-	#ifndef GRAPH_H
+#ifndef GRAPH_H
 #define GRAPH_H
 
 #include <list>
@@ -13,7 +13,10 @@ enum Color {
 
 class Graph {
 public:
+	Graph();
 	Graph(int vCount); // Graph Constructor giving total number of vertices
+
+	int getTotalVertices();
 
 	//Add an edge to the graph by adding new vertex w the existing vertex v 
 	void addEdge(int v, int w);
@@ -25,8 +28,8 @@ public:
 	void DFS(int v);
 
 	void findSources(int v);
-
 	bool colorable();
+
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices
