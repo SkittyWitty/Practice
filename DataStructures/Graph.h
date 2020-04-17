@@ -30,12 +30,15 @@ public:
 	void findSources(int v);
 
 	bool colorable();
+	Graph reverseGraph(int v);
+
 private:
 	int totalV; // Number of Vertices
 	list <int>* adj; // list of adjacent vertices
 	void explore(int v, bool* visited); //Utility for exploring all reachable vertices of a given source
 	void explore(int v, bool* visited, bool* source);
 	bool explore(int v, bool* visited, Color* vColor);
+	void explore(int v, bool* visited, Graph* g);
 };	
 
 #endif // GRAPH_H

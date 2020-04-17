@@ -7,5 +7,7 @@ set(QUEUE "Queue.h" "Queue.cpp")
 set(TREE "Tree.cpp" "Tree.h")
 set(GRAPH_UTIL "GraphUtil.hpp")
 set(PRIOR_QUEUE_ARR "PriorityQueue.h" "PriorityQueue.h")
+set(STACK "Stack.h" "Stack.cpp")
+set(SORTS "Sorts.h" "Sorts.cpp")
 
-add_executable(${PROJECT_NAME} ${LINKEDLIST} ${GRAPH_UTIL} ${GRAPH} ${QUEUE} ${TREE} ${PRIOR_QUEUE} "main.cpp")
+add_executable(${PROJECT_NAME} ${LINKEDLIST} ${GRAPH_UTIL} ${GRAPH} ${QUEUE} ${TREE} ${PRIOR_QUEUE} ${STACK} "main.cpp")

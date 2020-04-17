@@ -1,8 +1,11 @@
 ﻿#include <iostream>
 #include "Graph.h"
 #include "LinkedList.h"
+#include "GraphUtil.hpp"
+#include "Tree.h"
 
 using namespace std;
+using namespace GraphUtil;
 
 void graphTestDriver() {
 	// Create a graph 
@@ -15,7 +18,7 @@ void graphTestDriver() {
 	g.addEdge(3, 3);
 
 	//DFS
-	g.DFS(2);
+	g.DFS(0);
 
 	//BFS
 	g.BFS(2);
@@ -93,15 +96,19 @@ void graphTestDriver5(){
 }
 
 void graphTestDriver6() {
-	Graph g(2);
-	g.addEdge(0, 1);
-	g.addEdge(1, 2);
+	Graph g(3);
+	g.addEdge(1,0);
+	g.addEdge(0,2);
+	g.DFS(1);
 	
 	Graph gRev;
-
-	gRev = g;
+	gRev = g.reverseGraph(1);
 
 	cout << "Reverse Graph Total Vertices: " << gRev.getTotalVertices() << endl;
+	cout << "Reverse Graph Edges start" << endl;
+	gRev.DFS(2);
+	cout << "Reverse Graph Edges end" << endl;
+
 }
 
 void nodeTestDrive() {
@@ -117,15 +124,29 @@ void nodeTestDrive() {
 	//LinkedList myList = new LinkedList();
 }
 
+void treeTraversalTestDriver() {
+	TreeNode root(10);
+	TreeUtil meh;
+	meh.inOrderTraversal(&root);
+}
+
+void minHeightTest() {
+	int sortedArr[] = {1,2,3,4,5};
+	MinHeightBST meh(sortedArr);
+	meh.traverseTree();
+}
+
 int main()
 {
     cout << "Hello World!" << endl;
 
 	//graphTestDriver();
-	graphTestDriver3();
-	graphTestDriver4();
-	graphTestDriver5();
-	graphTestDriver6();
+	//graphTestDriver3();
+	//graphTestDriver4();
+	//graphTestDriver5();
+	//graphTestDriver6();
+
+	minHeightTest();
     return 0;
 }
 

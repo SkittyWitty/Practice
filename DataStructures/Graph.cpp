@@ -4,6 +4,7 @@
 #include <queue>
 
 using namespace std;
+
 Graph::Graph() {}
 
 Graph::Graph(int v){
@@ -52,13 +53,14 @@ void Graph::BFS(int v) {
 }
 
 void Graph::explore(int v, bool* visited) {
-	cout << "exploring node " << v << endl;
+	//cout << "exploring node " << v << endl;
 
 	//Get the list of adj vertices and travel to each one
 	visited[v] = true;
 	//pre visit here
 	for (list<int>::iterator it = adj[v].begin(); it != adj[v].end(); ++it) {		
 		if (!visited[*it]) { // if it hasn't been visited yet go deeper
+			cout << "Edge: (" << v << "," << *it << ")" << endl;
 			explore(*it, visited); //Use recursion as our stack to retrace our steps
 		}
 	}
@@ -76,7 +78,7 @@ void Graph::DFS(int v){
 	cout << "DFS Start" << endl;
 
 	//search every vertex
-	for (int i = 0; i < totalV; i++) { 
+	for (int i = v; i < totalV; i++) { 
 		if (!visited[i]) {
 			explore(i, visited);
 		}
@@ -170,4 +172,40 @@ bool Graph::colorable() {
 	}
 
 	return true;
+}
+
+void Graph::explore(int v, bool* visited, Graph* revG) {
+	//add reverse of edge to new Graph
+	visited[v] = true;
+
+	for(auto it = adj[v].begin(); it != adj[v].end(); ++it) {
+		if (!visited[*it]) {
+			//if it is found in an adj list it is not a source
+			revG->addEdge(*it, v);
+			explore(*it, visited, revG);
+		}
+	}
+}
+
+Graph Graph::reverseGraph(int v) {
+	Graph revG(totalV);
+	bool* visited = new bool[totalV]; //bool array to represent each node and if it has been visited
+	Graph* meh = &revG;
+	//mark each node as not visited
+	for (int i = 0; i < totalV; i++) {
+		visited[i] = false;
+	}
+
+	cout << "Begin Reversing" << endl;
+
+	//search every vertex
+	for (int i = v; i < totalV; i++) {
+		if (!visited[i]) {
+			explore(i, visited, meh);
+		}
+	}
+
+	//revG.DFS();
+	cout << "Reverse Graph End :)" << endl;
+	return revG;
 }
